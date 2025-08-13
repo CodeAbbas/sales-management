@@ -13,8 +13,7 @@ interface InvoiceComponentProps {
 export function InvoiceComponent({ sale, onClose }: InvoiceComponentProps) {
   const handleDownloadPDF = async () => {
     try {
-      // Dynamically import html2pdf to avoid SSR issues
-      const html2pdf = (await import("html2pdf.js")).default
+      const html2pdf = await import("html2pdf.js")
 
       const element = document.getElementById("invoice-content")
       if (!element) {
@@ -26,6 +25,7 @@ export function InvoiceComponent({ sale, onClose }: InvoiceComponentProps) {
         filename: `Invoice-${sale.invoiceNumber}.pdf`,
         html2canvas: {
           scale: 2,
+          useCORS: true,
         },
         jsPDF: {
           unit: "mm",
@@ -34,8 +34,8 @@ export function InvoiceComponent({ sale, onClose }: InvoiceComponentProps) {
         },
       }
 
-      // Fixed the chaining - html2pdf is the function, not html2pdf()
-      html2pdf(element).set(options).save()
+      // Use html2pdf directly without .default
+      await html2pdf.default(element, options)
     } catch (error) {
       console.error("Error generating PDF:", error)
       alert("Error generating PDF. Please try again.")
