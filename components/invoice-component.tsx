@@ -11,10 +11,34 @@ interface InvoiceComponentProps {
 }
 
 export function InvoiceComponent({ sale, onClose }: InvoiceComponentProps) {
-  const handleDownloadPDF = () => {
-    // In a real application, you would use a library like jsPDF or html2pdf
-    // For now, we'll just show an alert
-    alert("PDF download functionality would be implemented here")
+  const handleDownloadPDF = async () => {
+    try {
+      // Dynamically import html2pdf to avoid SSR issues
+      const html2pdf = (await import("html2pdf.js")).default
+
+      const element = document.getElementById("invoice-content")
+      if (!element) {
+        console.error("Invoice content element not found")
+        return
+      }
+
+      const options = {
+        filename: `Invoice-${sale.invoiceNumber}.pdf`,
+        html2canvas: {
+          scale: 2,
+        },
+        jsPDF: {
+          unit: "mm",
+          format: "a4",
+          orientation: "portrait",
+        },
+      }
+
+      await html2pdf().set(options).from(element).save()
+    } catch (error) {
+      console.error("Error generating PDF:", error)
+      alert("Error generating PDF. Please try again.")
+    }
   }
 
   const totalPayments = sale.payments.reduce((sum, payment) => sum + payment.amount, 0)
