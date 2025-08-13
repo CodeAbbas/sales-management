@@ -34,7 +34,8 @@ export function InvoiceComponent({ sale, onClose }: InvoiceComponentProps) {
         },
       }
 
-      await html2pdf().set(options).from(element).save()
+      // Fixed the chaining - html2pdf is the function, not html2pdf()
+      html2pdf(element).set(options).save()
     } catch (error) {
       console.error("Error generating PDF:", error)
       alert("Error generating PDF. Please try again.")
