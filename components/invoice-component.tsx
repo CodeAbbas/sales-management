@@ -13,29 +13,28 @@ interface InvoiceComponentProps {
 export function InvoiceComponent({ sale, onClose }: InvoiceComponentProps) {
   const handleDownloadPDF = async () => {
     try {
-      const html2pdf = await import("html2pdf.js")
+      const response = await fetch("/api/invoice", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(sale),
+      })
 
-      const element = document.getElementById("invoice-content")
-      if (!element) {
-        console.error("Invoice content element not found")
-        return
+      if (!response.ok) {
+        throw new Error("Failed to generate PDF")
       }
 
-      const options = {
-        filename: `Invoice-${sale.invoiceNumber}.pdf`,
-        html2canvas: {
-          scale: 2,
-          useCORS: true,
-        },
-        jsPDF: {
-          unit: "mm",
-          format: "a4",
-          orientation: "portrait",
-        },
-      }
-
-      // Use html2pdf directly without .default
-      await html2pdf.default(element, options)
+      // Create blob from response and trigger download
+      const blob = await response.blob()
+      const url = window.URL.createObjectURL(blob)
+      const a = document.createElement("a")
+      a.href = url
+      a.download = `Invoice-${sale.invoiceNumber}.pdf`
+      document.body.appendChild(a)
+      a.click()
+      document.body.removeChild(a)
+      window.URL.revokeObjectURL(url)
     } catch (error) {
       console.error("Error generating PDF:", error)
       alert("Error generating PDF. Please try again.")
