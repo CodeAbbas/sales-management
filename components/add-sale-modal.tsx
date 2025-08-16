@@ -214,7 +214,7 @@ export function AddSaleModal({ isOpen, onClose, onSave }: AddSaleModalProps) {
               <div className="bg-slate-50 p-4 rounded-lg space-y-3">
                 <div className="flex justify-between">
                   <span>Total Price:</span>
-                  <span className="font-medium">${totalPrice.toFixed(2)}</span>
+                  <span className="font-medium">£{totalPrice.toFixed(2)}</span>
                 </div>
                 <div>
                   <Label htmlFor="deposit">Initial Deposit</Label>
@@ -231,7 +231,7 @@ export function AddSaleModal({ isOpen, onClose, onSave }: AddSaleModalProps) {
                 </div>
                 <div className="flex justify-between text-lg font-medium">
                   <span>Amount Due:</span>
-                  <span className={amountDue > 0 ? "text-red-600" : "text-green-600"}>${amountDue.toFixed(2)}</span>
+                  <span className={amountDue > 0 ? "text-red-600" : "text-green-600"}>£{amountDue.toFixed(2)}</span>
                 </div>
               </div>
             </div>

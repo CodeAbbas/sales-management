@@ -36,7 +36,7 @@ export function AddPaymentModal({ sale, onClose, onSave }: AddPaymentModalProps)
           <div className="bg-slate-50 p-4 rounded-lg">
             <h3 className="font-medium text-slate-900">{sale.customerName}</h3>
             <p className="text-sm text-slate-600">{sale.customerPhone}</p>
-            <p className="text-lg font-medium text-red-600 mt-2">Amount Due: ${sale.amountDue.toFixed(2)}</p>
+            <p className="text-lg font-medium text-red-600 mt-2">Amount Due: £{sale.amountDue.toFixed(2)}</p>
           </div>
 
           {/* Previous Payments */}
@@ -59,7 +59,7 @@ export function AddPaymentModal({ sale, onClose, onSave }: AddPaymentModalProps)
                             ? new Date(payment.date).toLocaleDateString()
                             : payment.date.toDate().toLocaleDateString()}
                         </TableCell>
-                        <TableCell>${payment.amount.toFixed(2)}</TableCell>
+                        <TableCell>£{payment.amount.toFixed(2)}</TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
@@ -81,7 +81,7 @@ export function AddPaymentModal({ sale, onClose, onSave }: AddPaymentModalProps)
               max={sale.amountDue}
               step="0.01"
             />
-            <p className="text-sm text-slate-500 mt-1">Maximum: ${sale.amountDue.toFixed(2)}</p>
+            <p className="text-sm text-slate-500 mt-1">Maximum: £{sale.amountDue.toFixed(2)}</p>
           </div>
 
           {/* Action Buttons */}

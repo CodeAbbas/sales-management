@@ -171,14 +171,19 @@ export function SalesDashboard() {
                   <TableRow key={sale.id} className="hover:bg-slate-50">
                     <TableCell>
                       <div>
-                        <div className="font-medium text-slate-900">{sale.customerName}</div>
+                        <div
+                          className="font-medium text-slate-900 cursor-pointer hover:text-emerald-600 hover:underline"
+                          onClick={() => setSelectedSaleForInvoice(sale)}
+                        >
+                          {sale.customerName}
+                        </div>
                         <div className="text-sm text-slate-500">{sale.customerPhone}</div>
                       </div>
                     </TableCell>
-                    <TableCell className="font-medium">${sale.total.toFixed(2)}</TableCell>
+                    <TableCell className="font-medium">£{sale.total.toFixed(2)}</TableCell>
                     <TableCell>
                       <span className={sale.amountDue > 0 ? "text-red-600 font-medium" : "text-slate-600"}>
-                        ${sale.amountDue.toFixed(2)}
+                        £{sale.amountDue.toFixed(2)}
                       </span>
                     </TableCell>
                     <TableCell>
