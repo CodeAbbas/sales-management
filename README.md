@@ -1,97 +1,30 @@
-# Selection Furniture - Sales Management Dashboard
+# Sales management dashboard
 
-A modern, responsive sales management application built for Selection Furniture to track sales, manage customer payments, and generate professional invoices. This application is developed using **Next.js 15**, **React 19**, **TypeScript**, and **Firebase**.
+*Automatically synced with your [v0.app](https://v0.app) deployments*
 
-![Dashboard Preview](./public/placeholder-logo.png)
+[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/abbas-uddins-projects/v0-sales-management-dashboard)
+[![Built with v0](https://img.shields.io/badge/Built%20with-v0.app-black?style=for-the-badge)](https://v0.app/chat/projects/aiTUS5TEGOU)
 
-## 🚀 Features
+## Overview
 
--   **Sales Tracking**: View a comprehensive list of all sales with status indicators (Paid/Partial) and delivery status.
--   **Customer Management**: Store customer details including name, phone number, and delivery address.
--   **Payment Processing**: 
-    -   Record initial deposits and subsequent partial payments.
-    -   Real-time calculation of "Amount Due".
-    -   Visual history of all payments made for a specific sale.
--   **Invoicing**: 
-    -   Generate and download professional PDF invoices instantly.
-    -   Client-side PDF generation using `jspdf`.
--   **Data Management**:
-    -   Real-time data synchronization using **Firebase Firestore**.
-    -   Export sales data to CSV for external analysis.
-    -   Search functionality to quickly find customer orders.
--   **Responsive UI**: Built with **Tailwind CSS** and **shadcn/ui** components for a clean, mobile-friendly interface.
+This repository will stay in sync with your deployed chats on [v0.app](https://v0.app).
+Any changes you make to your deployed app will be automatically pushed to this repository from [v0.app](https://v0.app).
 
-## 🛠️ Tech Stack
+## Deployment
 
--   **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
--   **Language**: [TypeScript](https://www.typescriptlang.org/)
--   **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
--   **Components**: [shadcn/ui](https://ui.shadcn.com/) (Radix UI)
--   **Backend/Database**: [Firebase Firestore](https://firebase.google.com/)
--   **PDF Generation**: [jspdf](https://github.com/parallax/jsPDF)
--   **Icons**: [Lucide React](https://lucide.dev/)
+Your project is live at:
 
-## ⚙️ Prerequisites
+**[https://vercel.com/abbas-uddins-projects/v0-sales-management-dashboard](https://vercel.com/abbas-uddins-projects/v0-sales-management-dashboard)**
 
-Before you begin, ensure you have the following installed:
--   [Node.js](https://nodejs.org/) (v18 or higher)
--   npm, pnpm, or yarn
+## Build your app
 
-You will also need a **Firebase Project** set up with a Firestore database enabled.
+Continue building your app on:
 
-## 🚀 Getting Started
+**[https://v0.app/chat/projects/aiTUS5TEGOU](https://v0.app/chat/projects/aiTUS5TEGOU)**
 
-1.  **Clone the repository**
-    ```bash
-    git clone [https://github.com/yourusername/sales-management.git](https://github.com/yourusername/sales-management.git)
-    cd sales-management
-    ```
+## How It Works
 
-2.  **Install dependencies**
-    ```bash
-    npm install
-    # or
-    pnpm install
-    ```
-
-3.  **Environment Setup**
-    Create a `.env.local` file in the root directory and add your Firebase configuration keys. You can find these in your Firebase Project Settings.
-
-    ```env
-    NEXT_PUBLIC_FIREBASE_API_KEY=your_api_key
-    NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_project_id.firebaseapp.com
-    NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
-    NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your_project_id.appspot.com
-    NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
-    NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
-    ```
-
-4.  **Run the development server**
-    ```bash
-    npm run dev
-    # or
-    pnpm dev
-    ```
-
-5.  **Open the app**
-    Open [http://localhost:3000](http://localhost:3000) with your browser to see the dashboard.
-
-## Project Structure
-
-```text
-├── app/
-│   ├── api/            # API routes (e.g., server-side PDF generation)
-│   ├── globals.css     # Global styles and Tailwind directives
-│   ├── layout.tsx      # Root layout with font configurations
-│   └── page.tsx        # Main entry point rendering SalesDashboard
-├── components/
-│   ├── ui/             # Reusable shadcn/ui components (Button, Input, etc.)
-│   ├── add-payment-modal.tsx # Modal logic for recording payments
-│   ├── add-sale-modal.tsx    # Multi-step form for creating new sales
-│   ├── invoice-component.tsx # Invoice preview and download logic
-│   ├── sales-dashboard.tsx   # Main dashboard view and logic
-│   └── theme-provider.tsx    # Next-themes provider
-├── lib/
-│   ├── firebase.ts     # Firebase initialization and export
-│   └── utils.ts        # Utility functions (cn class merger)
-└── public/             # Static assets
+1. Create and modify your project using [v0.app](https://v0.app)
+2. Deploy your chats from the v0 interface
+3. Changes are automatically pushed to this repository
+4. Vercel deploys the latest version from this repository
